@@ -14,12 +14,17 @@ mqtt_pass="$(bashio::services mqtt pass)"
 mqtt_user="rtl_433"
 mqtt_pass="334_ltr"
 
-echo "Publishing discovery info..."
-./discovery.py \
-    --host=${mqtt_host} \
-    --port=${mqtt_port} \
-    --user=${mqtt_user} \
-    --pass=${mqtt_pass}
+while true; do
+    echo "Publishing discovery info..."
+    ./discovery.py \
+        --host=${mqtt_host} \
+        --port=${mqtt_port} \
+        --user=${mqtt_user} \
+        --pass=${mqtt_pass}
+    sleep 60
+done &
+
+pub_pid=$!
 
 echo "Runnning rtl_433..."
 /usr/local/bin/rtl_433 \
@@ -28,3 +33,5 @@ echo "Runnning rtl_433..."
     -C si \
     -M newmode \
     -v
+
+kill $pub_pid
