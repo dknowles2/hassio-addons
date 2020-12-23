@@ -15,7 +15,7 @@ mqtt_user="rtl_433"
 mqtt_pass="334_ltr"
 
 while true; do
-    echo "Publishing discovery info..."
+    bashio::log.info "Publishing discovery info..."
     ./discovery.py \
         --host=${mqtt_host} \
         --port=${mqtt_port} \
@@ -26,12 +26,16 @@ done &
 
 pub_pid=$!
 
-echo "Runnning rtl_433..."
+bashio::log.info "Runnning rtl_433..."
 /usr/local/bin/rtl_433 \
     -F "mqtt://${mqtt_host}:${mqtt_port},user=${mqtt_user},pass=${mqtt_pass},retain=1" \
     -F json \
     -C si \
     -M newmode \
-    -v
+    -v | while read l
+do
+    bashio::log.info $l
+done
+
 
 kill $pub_pid
