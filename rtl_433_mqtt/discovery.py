@@ -52,8 +52,8 @@ CONFIG_TEMPLATES = {
                 'device_class': '%(primary_device_class)s',
                 'name': '%(device_name)s',
                 'unique_id': '%(device_id)s_%(primary_device_class)s',
-                'payload_on': '0',
-                'payload_off': '1',
+                'payload_on': '1',
+                'payload_off': '0',
                 'device': {
                     'manufacturer': '%(manufacturer)s',
                     'model': '%(model)s',
