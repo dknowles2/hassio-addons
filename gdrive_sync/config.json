@@ -1,17 +1,21 @@
 {
     "name": "gDrive Sync",
-    "version": "1608827556",
+    "version": "1608836018",
     "slug": "gdrive_sync",
     "description": "Syncs files to gDrive",
+    "arch": ["amd64"],
     "url": "https://github.com/dknowles2/hassio-addons/gdrive_sync",
-    "startup": "services",
+    "startup": "application",
     "boot": "auto",
     "map": ["config:rw", "share:rw"],
-    "arch": ["amd64"],
-    "options": {},
+    "options": {
+        "project_id": null,
+        "client_id": null,
+        "client_secret": null
+    },
     "schema": {
         "project_id": "str",
         "client_id": "str",
-        "client_secret": "str",
+        "client_secret": "str"
     }
 }
