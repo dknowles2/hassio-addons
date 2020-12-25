@@ -6,8 +6,8 @@ echo "[mqtt $(bashio::services mqtt)]"
 
 mqtt_host="$(bashio::services mqtt host)"
 mqtt_port="$(bashio::services mqtt port)"
-mqtt_user="$(bashio::services mqtt user)"
-mqtt_pass="$(bashio::services mqtt pass)"
+mqtt_user="$(bashio::services mqtt username)"
+mqtt_pass="$(bashio::services mqtt password)"
 
 while true; do
     bashio::log.info "Publishing discovery info..."
