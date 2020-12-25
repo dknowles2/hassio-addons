@@ -6,13 +6,8 @@ echo "[mqtt $(bashio::services mqtt)]"
 
 mqtt_host="$(bashio::services mqtt host)"
 mqtt_port="$(bashio::services mqtt port)"
-
 mqtt_user="$(bashio::services mqtt user)"
 mqtt_pass="$(bashio::services mqtt pass)"
-
-# FIXME:
-mqtt_user="rtl_433"
-mqtt_pass="334_ltr"
 
 while true; do
     bashio::log.info "Publishing discovery info..."
