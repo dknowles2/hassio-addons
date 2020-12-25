@@ -1,9 +1,5 @@
 #!/usr/bin/env bashio
 
-echo "[version $(bashio::addon.version)]"
-echo "[host $(bashio::addon.hostname)]"
-echo "[mqtt $(bashio::services mqtt)]"
-
 mqtt_host="$(bashio::services mqtt host)"
 mqtt_port="$(bashio::services mqtt port)"
 mqtt_user="$(bashio::services mqtt username)"
