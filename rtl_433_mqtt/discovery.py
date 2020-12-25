@@ -6,6 +6,7 @@ from __future__ import with_statement
 import json
 import optparse
 import paho.mqtt.client as mqtt
+import socket
 
 parser = optparse.OptionParser()
 parser.add_option('--host', action='store', dest='host', default='127.0.0.1')
@@ -118,7 +119,7 @@ def get_sensors():
                     'sn': sn,
                     'device_name': name,
                     'device_id': sanitize(name),
-                    'host': 'local-rtl-433-to-mqtt',
+                    'host': socket.gethostname(),
                 }
                 dump = json.dumps(tmpl)
                 config = json.loads(dump % sub)
