@@ -6,6 +6,8 @@ Watches a directory for new files and uploads them to gDrive.
 
 Used for moving scanned documents from a SMB share into gDrive.
 
+Also see https://github.com/dknowles2/gdrive_sync for the actual code.
+
 ## rtl_433_mqtt
 
 Monitors RF signals on 433mhz and publishes them to MQTT in a Home
