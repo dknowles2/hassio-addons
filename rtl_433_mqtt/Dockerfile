@@ -23,7 +23,6 @@ RUN apk add --no-cache -t build-deps alpine-sdk cmake git libusb-dev librtlsdr-d
 RUN apk add --no-cache libusb librtlsdr mosquitto-clients jq
 RUN apk add --no-cache python3 py3-paho-mqtt
 
-COPY 20-rtlsdr.rules /etc/udev/rules.d/
 COPY discovery.py /
 COPY run.sh /
 
