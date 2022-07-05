@@ -19,7 +19,7 @@
     },
     "schema": {
         "mqtt_root_topic": "str?",
-        "genmon_url": "url?",
+        "genmon_url": "str?",
         "generator_device_name": "str?",
         "generator_manufacturer": "str?",
         "generator_model": "str?",
