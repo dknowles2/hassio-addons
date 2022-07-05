@@ -1,0 +1,28 @@
+{
+    "name": "Genmon MQTT Discovery",
+    "version": "20220705.0",
+    "slug": "genmon_mqtt_discovery",
+    "description": "MQTT Discovery for Genmon",
+    "url": "https://github.com/dknowles2/genmon_mqtt_discovery",
+    "startup": "services",
+    "boot": "auto",
+    "map": ["config:rw"],
+    "arch": ["amd64"],
+    "services": ["mqtt:need"],
+    "options": {
+        "mqtt_root_topic": "",
+        "genmon_url": "",
+        "generator_device_name": "Generator",
+        "generator_manufacturer": "Generac",
+        "generator_model": "Generic Generator",
+        "generator_area": "Backyard",
+    },
+    "schema": {
+        "mqtt_root_topic": "str?",
+        "genmon_url": "url?",
+        "generator_device_name": "str?",
+        "generator_manufacturer": "str?",
+        "generator_model": "str?",
+        "generator_area": "str?",
+    }
+}
