@@ -14,4 +14,4 @@ while true; do
         --generator_model="$(bashio::config 'generator_model' '')" \
         --generator_area="$(bashio::config 'generator_area' '')"
     sleep 60
-done &
+done

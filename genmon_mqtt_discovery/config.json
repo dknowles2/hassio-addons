@@ -1,6 +1,6 @@
 {
     "name": "Genmon MQTT Discovery",
-    "version": "1657051769",
+    "version": "1657052208",
     "slug": "genmon_mqtt_discovery",
     "description": "MQTT Discovery for Genmon",
     "url": "https://github.com/dknowles2/genmon_mqtt_discovery",
