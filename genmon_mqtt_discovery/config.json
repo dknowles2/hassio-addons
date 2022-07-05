@@ -1,9 +1,9 @@
 {
     "name": "Genmon MQTT Discovery",
-    "version": "1657052208",
+    "version": "1657052851",
     "slug": "genmon_mqtt_discovery",
     "description": "MQTT Discovery for Genmon",
-    "url": "https://github.com/dknowles2/genmon_mqtt_discovery",
+    "url": "https://github.com/dknowles2/hassio-addons/genmon_mqtt_discovery",
     "startup": "services",
     "boot": "auto",
     "map": ["config:rw"],
