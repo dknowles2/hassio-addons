@@ -56,7 +56,7 @@ def sanitize(s):
 def voltage(precision=1):
     return dict(
         device_class='voltage',
-        unit_of_measurement='VAC',
+        unit_of_measurement='V',
         value_template=f'{{{{ value | regex_replace(" V", "") | float | round({precision}) }}}}',
     )
 
@@ -85,7 +85,7 @@ class Discovery:
             self.generator_sensor(
                 engine('Frequency'), 'Engine Frequency',
                 device_class='frequency',
-                unit_of_measurement='HZ',
+                unit_of_measurement='Hz',
                 value_template='{{ value | regex_replace(" Hz", "") | float }}'),
             self.generator_sensor(
                 engine('Output Voltage'), 'Engine Output Voltage', **voltage()),
@@ -112,7 +112,7 @@ class Discovery:
             self.generator_sensor(
                 maintenance('Service/Total Run Hours'), 'Total Run Time',
                 device_class='duration',
-                unit_of_measurement='hours',
+                unit_of_measurement='h',
                 value_template='{{ value | regex_replace(" +h$", "") | default(0) | float }}'),
             self.generator_sensor(
                 maintenance('Service/Hardware Version'), 'Hardware Version'),
