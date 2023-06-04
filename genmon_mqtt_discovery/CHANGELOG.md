@@ -1,5 +1,9 @@
-	# Changelog
+# Changelog
 
-	## 1657052851
+## 1685906796
 
-	*   Initial version.
+*   Give an explicit state_class for text measurements
+
+## 1657052851
+
+*   Initial version.
