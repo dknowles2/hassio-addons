@@ -102,9 +102,9 @@ class Discovery:
                 outage('System in Outage'), 'Power Outage',
                 payload_off='No',
                 payload_on='Yes'),
-            self.generator_sensor(log('Alarm'), 'Last Alarm Log'),
-            self.generator_sensor(log('Service'), 'Last Service Log'),
-            self.generator_sensor(log('Start Stop'), 'Last Action'),
+            self.generator_sensor(log('Alarm'), 'Last Alarm Log', state_class='measurement'),
+            self.generator_sensor(log('Service'), 'Last Service Log', state_class='measurement'),
+            self.generator_sensor(log('Start Stop'), 'Last Action', state_class='measurement'),
             self.generator_sensor(
                 maintenance('Rated kW'), 'Rated Capacity', **power()),
             self.generator_sensor(
@@ -117,7 +117,7 @@ class Discovery:
             self.generator_sensor(
                 maintenance('Service/Hardware Version'), 'Hardware Version'),
             self.generator_sensor(
-                maintenance('Service/Firmware Version'), 'Firmware Version'),
+                maintenance('Service/Firmware Version'), 'Firmware Version', state_class='measurement'),
 
             # Genmon Diagnostic Sensors
             self.genmon_sensor(
@@ -126,7 +126,7 @@ class Discovery:
                 unit_of_measurement='°F',
                 value_template='{{ value | regex_replace(" F", "") | float | round(0) }}'),
             # TODO: Maybe parse this into raw hours?
-            self.genmon_sensor(platform('System Uptime'), 'Uptime'),
+            self.genmon_sensor(platform('System Uptime'), 'Uptime', state_class='measurement'),
             self.genmon_sensor(
                 platform('CPU Utilization'), 'Load',
                 unit_of_measurement='%',
