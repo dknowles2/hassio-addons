@@ -117,15 +117,9 @@ class Discovery:
                 payload_off="No",
                 payload_on="Yes",
             ),
-            self.generator_sensor(
-                log("Alarm"), "Last Alarm Log", state_class="measurement"
-            ),
-            self.generator_sensor(
-                log("Service"), "Last Service Log", state_class="measurement"
-            ),
-            self.generator_sensor(
-                log("Start Stop"), "Last Action", state_class="measurement"
-            ),
+            self.generator_sensor(log("Alarm"), "Last Alarm Log", state_class=None),
+            self.generator_sensor(log("Service"), "Last Service Log", state_class=None),
+            self.generator_sensor(log("Start Stop"), "Last Action", state_class=None),
             self.generator_sensor(maintenance("Rated kW"), "Rated Capacity", **power()),
             self.generator_sensor(
                 maintenance("Exercise/Exercise Time"), "Exercise Time"
@@ -138,12 +132,14 @@ class Discovery:
                 value_template='{{ value | regex_replace(" +h$", "") | default(0) | float }}',
             ),
             self.generator_sensor(
-                maintenance("Service/Hardware Version"), "Hardware Version"
+                maintenance("Service/Hardware Version"),
+                "Hardware Version",
+                state_class=None,
             ),
             self.generator_sensor(
                 maintenance("Service/Firmware Version"),
                 "Firmware Version",
-                state_class="measurement",
+                state_class=None,
             ),
             # Genmon Diagnostic Sensors
             self.genmon_sensor(
@@ -154,9 +150,7 @@ class Discovery:
                 value_template='{{ value | regex_replace(" F", "") | float | round(0) }}',
             ),
             # TODO: Maybe parse this into raw hours?
-            self.genmon_sensor(
-                platform("System Uptime"), "Uptime", state_class="measurement"
-            ),
+            self.genmon_sensor(platform("System Uptime"), "Uptime", state_class=None),
             self.genmon_sensor(
                 platform("CPU Utilization"),
                 "Load",
