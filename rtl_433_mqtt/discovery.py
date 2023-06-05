@@ -6,7 +6,6 @@ from __future__ import with_statement
 import json
 import optparse
 import paho.mqtt.client as mqtt
-import socket
 
 parser = optparse.OptionParser()
 parser.add_option('--host', action='store', dest='host', default='127.0.0.1')
@@ -15,7 +14,7 @@ parser.add_option('--user', action='store', dest='user', default='rtl_433')
 parser.add_option('--pass', action='store', dest='password', default='334_ltr')
 
 STATE_TOPIC_PREFIX_TEMPLATE = (
-    'rtl_433/%(host)s/devices/%(manufacturer_sanitized)s/%(sn)s')
+    'rtl_433/+/devices/%(manufacturer_sanitized)s/%(sn)s')
 DISCOVERY_TOPIC_TEMPLATE = 'homeassistant/binary_sensor/%(unique_id)s/config'
 
 KNOWN_DEVICES = {
@@ -119,7 +118,6 @@ def get_sensors():
                     'sn': sn,
                     'device_name': name,
                     'device_id': sanitize(name),
-                    'host': socket.gethostname(),
                 }
                 dump = json.dumps(tmpl)
                 config = json.loads(dump % sub)
