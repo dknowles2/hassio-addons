@@ -6,14 +6,20 @@ from __future__ import with_statement
 import json
 import optparse
 import paho.mqtt.client as mqtt
+import socket
 
 parser = optparse.OptionParser()
 parser.add_option("--host", action="store", dest="host", default="127.0.0.1")
 parser.add_option("--port", action="store", dest="port", type="int", default=1883)
 parser.add_option("--user", action="store", dest="user", default="rtl_433")
 parser.add_option("--pass", action="store", dest="password", default="334_ltr")
+parser.add_option(
+    "--topic_host", action="store", dest="topic_host", default=socket.gethostname()
+)
 
-STATE_TOPIC_PREFIX_TEMPLATE = "rtl_433/+/devices/%(manufacturer_sanitized)s/%(sn)s"
+STATE_TOPIC_PREFIX_TEMPLATE = (
+    "rtl_433/%(topic_host)s/devices/%(manufacturer_sanitized)s/%(sn)s"
+)
 DISCOVERY_TOPIC_TEMPLATE = "homeassistant/binary_sensor/%(unique_id)s/config"
 
 KNOWN_DEVICES = {
@@ -50,7 +56,7 @@ CONFIG_TEMPLATES = {
                 "state_topic": STATE_TOPIC_PREFIX_TEMPLATE + "/closed",
                 "device_class": "%(primary_device_class)s",
                 "name": "%(device_name)s",
-                "unique_id": "%(device_id)s_%(primary_device_class)s",
+                "unique_id": "%(sn)s_%(primary_device_class)s",
                 "payload_on": "0",
                 "payload_off": "1",
                 "device": {
@@ -66,7 +72,7 @@ CONFIG_TEMPLATES = {
                 "state_topic": STATE_TOPIC_PREFIX_TEMPLATE + "/battery_ok",
                 "device_class": "battery",
                 "name": "%(device_name)s (Battery)",
-                "unique_id": "%(device_id)s_battery",
+                "unique_id": "%(sn)s_battery",
                 "payload_on": "0",
                 "payload_off": "1",
                 "device": {
@@ -82,7 +88,7 @@ CONFIG_TEMPLATES = {
                 "state_topic": STATE_TOPIC_PREFIX_TEMPLATE + "/tamper",
                 "device_class": "problem",
                 "name": "%(device_name)s (Tamper)",
-                "unique_id": "%(device_id)s_tamper",
+                "unique_id": "%(sn)s_tamper",
                 "payload_on": "1",
                 "payload_off": "0",
                 "device": {
@@ -102,7 +108,7 @@ def sanitize(name):
     return name.translate(name.maketrans(" /.", "___", "&"))
 
 
-def get_sensors():
+def get_sensors(topic_host):
     all_sensors = []
     for (manufacturer, model, primary_device_class), sn_name in KNOWN_DEVICES.items():
         for sn, name in sn_name.items():
@@ -116,6 +122,7 @@ def get_sensors():
                     "sn": sn,
                     "device_name": name,
                     "device_id": sanitize(name),
+                    "topic_host": topic_host,
                 }
                 dump = json.dumps(tmpl)
                 config = json.loads(dump % sub)
@@ -127,7 +134,7 @@ def get_sensors():
 def publish_discovery(c, sensors):
     for topic, config in sensors:
         config_json = json.dumps(config)
-        c.publish(topic, config_json, False)
+        c.publish(topic, config_json, retain=True)
 
 
 def main():
@@ -136,7 +143,7 @@ def main():
     c.username_pw_set(opts.user, opts.password)
     c.connect(opts.host, opts.port, 60)
     try:
-        publish_discovery(c, get_sensors())
+        publish_discovery(c, get_sensors(opts.topic_host))
     finally:
         c.disconnect()
 
