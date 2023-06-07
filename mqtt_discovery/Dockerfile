@@ -4,11 +4,11 @@ FROM ${BUILD_FROM}
 ENV LANG C.UTF-8
 ENV PIP_ROOT_USER_ACTION=ignore
 
+RUN apk add --no-cache python3 py3-paho-mqtt py3-yaml
+
 COPY discovery.py /
 COPY run.sh /
 
-RUN pip install --no-cache-dir --prefer-binary paho-mqtt
-RUN pip install --no-cache-dir --no-binary pyyaml pyyaml
 RUN chmod a+x /run.sh
 
 ENTRYPOINT ["/run.sh"]

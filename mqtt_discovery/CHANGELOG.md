@@ -1,5 +1,9 @@
 # Changelog
 
+## 2023.6.11
+
+* Install python packages via apk
+
 ## 2023.6.10
 
 * Fix pip command
