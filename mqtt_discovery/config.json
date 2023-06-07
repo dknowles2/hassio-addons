@@ -8,5 +8,5 @@
     "boot": "auto",
     "map": ["config:rw"],
     "arch": ["amd64"],
-    "services": ["mqtt:need"],
+    "services": ["mqtt:need"]
 }
