@@ -1,6 +1,10 @@
 # Changelog
 
-2023.6.4
+## 2023.6.5
+
+* Fix typo in discovery.py
+
+## 2023.6.4
 
 * Fixes to run.sh
 

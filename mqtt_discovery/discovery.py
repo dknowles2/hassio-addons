@@ -57,7 +57,7 @@ def main():
     client = mqtt.Client()
     client.username_pw_set(opts.mqtt_user, opts.mqtt_password)
     client.connect(opts.mqtt_host, opts.mqtt_port, 60)
-    with open(") as f:
+    with open(opts.config_file) as f:
         config_yaml = yaml.load(f, Loader=yaml.CLoader)
     entities = parse(config_yaml)
     try:
