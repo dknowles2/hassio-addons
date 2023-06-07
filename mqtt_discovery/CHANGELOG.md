@@ -1,5 +1,9 @@
 # Changelog
 
+## 2023.6.7
+
+* Handle `yaml.CLoader` not being available
+
 ## 2023.6.6
 
 * Install missing PyYAML in container

@@ -6,6 +6,10 @@ import optparse
 from typing import Any
 import paho.mqtt.client as mqtt
 import yaml
+try:
+    from yaml import CLoader as Loader
+except ImportError:
+    from yaml import Loader
 
 parser = optparse.OptionParser()
 parser.add_option("--mqtt_host", dest="mqtt_host", default="192.168.1.11")
@@ -58,7 +62,7 @@ def main():
     client.username_pw_set(opts.mqtt_user, opts.mqtt_password)
     client.connect(opts.mqtt_host, opts.mqtt_port, 60)
     with open(opts.config_file) as f:
-        config_yaml = yaml.load(f, Loader=yaml.CLoader)
+        config_yaml = yaml.load(f, Loader=Loader)
     entities = parse(config_yaml)
     try:
         publish(client, entities)
