@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv bashio
+#!/usr/bin/env bashio
 
 conf_directory="/config/mqtt_discovery"
 conf_file="${conf_directory}/conf.yaml"
