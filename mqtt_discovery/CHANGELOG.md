@@ -1,5 +1,9 @@
 # Changelog
 
+2023.6.4
+
+* Fixes to run.sh
+
 ## 2023.6.3
 
 * More fixes

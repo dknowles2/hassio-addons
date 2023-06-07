@@ -3,7 +3,7 @@
 conf_directory="/config/mqtt_discovery"
 conf_file="${conf_directory}/conf.yaml"
 
-if [[ bashio::services.available "mqtt"]] ; then
+if bashio::services.available "mqtt" ; then
     host=$(bashio::services "mqtt" "host")
     password=$(bashio::services "mqtt" "password")
     port=$(bashio::services "mqtt" "port")
