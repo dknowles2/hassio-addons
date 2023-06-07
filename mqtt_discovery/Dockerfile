@@ -6,11 +6,8 @@ ENV LANG C.UTF-8
 COPY discovery.py /
 COPY run.sh /
 
-RUN \
-    pip install \
-        --no-cache-dir \
-        --prefer-binary \
-        paho-mqtt PyYAML \
-    && chmod a+x /run.sh
+RUN pip install --no-cache-dir --prefer-binary paho-mqtt
+RUN pip install --no-cache-dir --no-binary PyYAML
+RUN chmod a+x /run.sh
 
 ENTRYPOINT ["/run.sh"]

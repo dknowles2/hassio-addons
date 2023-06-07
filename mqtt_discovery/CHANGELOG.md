@@ -1,5 +1,9 @@
 # Changelog
 
+## 2023.6.8
+
+* Try to install PyYAML with libyaml
+
 ## 2023.6.7
 
 * Handle `yaml.CLoader` not being available
