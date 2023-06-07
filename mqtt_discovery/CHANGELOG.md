@@ -1,5 +1,9 @@
 # Changelog
 
+## 2023.6.10
+
+* Fix pip command
+
 ## 2023.6.9
 
 * Ignore pip root errors
