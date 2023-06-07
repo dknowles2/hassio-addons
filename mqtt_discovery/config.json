@@ -1,6 +1,6 @@
 {
     "name": "MQTT Discovery Publisher",
-    "version": "2023.6.2",
+    "version": "2023.6.3",
     "slug": "mqtt_discovery",
     "description": "MQTT Discovery Publisher",
     "url": "https://github.com/dknowles2/hassio-addons/mqtt_discovery",

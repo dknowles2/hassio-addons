@@ -13,4 +13,4 @@ RUN \
         paho-mqtt \
     && chmod a+x /run.sh
 
-CMD ["/run.sh"]
+ENTRYPOINT ["/run.sh"]
