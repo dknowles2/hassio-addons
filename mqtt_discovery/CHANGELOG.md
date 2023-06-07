@@ -1,5 +1,9 @@
 # Changelog
 
+## 2023.6.9
+
+* Ignore pip root errors
+
 ## 2023.6.8
 
 * Try to install PyYAML with libyaml
