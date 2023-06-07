@@ -10,7 +10,7 @@ RUN \
     pip install \
         --no-cache-dir \
         --prefer-binary \
-        paho-mqtt \
+        paho-mqtt PyYAML \
     && chmod a+x /run.sh
 
 ENTRYPOINT ["/run.sh"]

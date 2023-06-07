@@ -1,5 +1,9 @@
 # Changelog
 
+## 2023.6.6
+
+* Install missing PyYAML in container
+
 ## 2023.6.5
 
 * Fix typo in discovery.py
