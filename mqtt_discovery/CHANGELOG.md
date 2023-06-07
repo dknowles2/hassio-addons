@@ -1,5 +1,9 @@
 # Changelog
 
+## 2023.6.12
+
+* Use a newer base image; use pip to install packages.
+
 ## 2023.6.11
 
 * Install python packages via apk
