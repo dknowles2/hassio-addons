@@ -1,12 +1,12 @@
 {
-    "name": "MQTT Discovery Publisher",
-    "version": "2023.6.12",
-    "slug": "mqtt_discovery",
-    "description": "MQTT Discovery Publisher",
-    "url": "https://github.com/dknowles2/hassio-addons/mqtt_discovery",
-    "startup": "services",
-    "boot": "auto",
-    "map": ["config:rw"],
-    "arch": ["amd64"],
-    "services": ["mqtt:need"]
+  "name": "MQTT Discovery Publisher",
+  "version": "2024.12.0",
+  "slug": "mqtt_discovery",
+  "description": "MQTT Discovery Publisher",
+  "url": "https://github.com/dknowles2/hassio-addons/mqtt_discovery",
+  "startup": "services",
+  "boot": "auto",
+  "map": ["config:rw"],
+  "arch": ["amd64"],
+  "services": ["mqtt:need"]
 }
