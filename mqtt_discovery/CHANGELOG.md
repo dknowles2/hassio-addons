@@ -1,5 +1,9 @@
 # Changelog
 
+## 2024.12.1
+
+* Make rewrites publish with the `retain` bit.
+
 ## 2024.12.0
 
 * Add the ability to rewrite discovery feeds.

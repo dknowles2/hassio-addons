@@ -163,7 +163,7 @@ class DiscoveryPublisher:
                 )
             else:
                 LOGGER.info("Republishing topic %s", message.topic)
-                self._client.publish(message.topic, new_payload_str)
+                self._client.publish(message.topic, new_payload_str, retain=True)
 
 
 def main():
