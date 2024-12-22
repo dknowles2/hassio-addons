@@ -1,5 +1,9 @@
 # Changelog
 
+## 2024.12.0
+
+* Add the ability to rewrite discovery feeds.
+
 ## 2023.6.12
 
 * Use a newer base image; use pip to install packages.
