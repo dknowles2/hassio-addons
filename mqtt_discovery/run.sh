@@ -19,15 +19,10 @@ if [[ ! -d ${conf_directory} ]]; then
     touch ${conf_file}
 fi
 
-while true; do
-    bashio::log.info "Publishing discovery info..."
-    python3 \
-        -u /discovery.py \
-        --mqtt_host=${host} \
-        --mqtt_port=${port} \
-        --mqtt_user=${username} \
-        --mqtt_pass=${password} \
-        --config_file=${conf_file}
-
-    sleep 60
-done
+python3 \
+    -u /discovery.py \
+    --mqtt_host=${host} \
+    --mqtt_port=${port} \
+    --mqtt_user=${username} \
+    --mqtt_pass=${password} \
+    --config_file=${conf_file}
