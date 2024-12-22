@@ -1,5 +1,9 @@
 # Changelog
 
+## 2024.12.2
+
+* Update the base docker image
+
 ## 2024.12.1
 
 * Make rewrites publish with the `retain` bit.
